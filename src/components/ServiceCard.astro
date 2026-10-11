@@ -1,0 +1,12 @@
+---
+import type { Service } from '../data/services';
+import { servicePath } from '../data/services';
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+interface Props { service: Service; index?: number; imageSizes?: string; }
+const { service, index = 0, imageSizes = '(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw' } = Astro.props;
+---
+<a href={servicePath(service)} class="service-card" data-reveal style={`--delay:${(index % 3) * 80}ms`}>
+  <div class="media"><Photo name={service.image} alt={service.alt} position={service.position} sizes={imageSizes} /></div>
+  <div class="body"><span class="icon-badge"><Icon name={service.icon} size={22} /></span><h3>{service.title}</h3><p>{service.description}</p><span class="more">Explore service <Icon name="arrow" size={16} /></span></div>
+</a>

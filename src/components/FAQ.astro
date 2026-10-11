@@ -1,0 +1,11 @@
+---
+import { generalFaqs } from '../data/business';
+import type { FAQ } from '../data/services';
+import Icon from './Icon.astro';
+interface Props { faqs?: FAQ[]; title?: string; }
+const { faqs = generalFaqs, title = 'A little clarity, before you enquire.' } = Astro.props;
+---
+<section class="section on-paper" id="faq"><div class="wrap faq-layout">
+  <div class="faq-intro" data-reveal><span class="eyebrow">Your questions, answered</span><h2 class="title-lg">{title}</h2><p class="copy">Every requirement is different. A conversation with our team is the best place to begin.</p><a href="/contact-us/" class="link-arrow">Talk to our team <Icon name="arrow" size={18} /></a></div>
+  <div class="faq-list" data-reveal>{faqs.map((faq, i) => <details name="faq" open={i === 0}><summary><span class="faq-num">0{i + 1}</span>{faq.q}<span class="faq-toggle" aria-hidden="true"></span></summary><p>{faq.a}</p></details>)}</div>
+</div></section>

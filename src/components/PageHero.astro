@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import Curve from './Curve.astro';
+interface Crumb { title: string; url?: string; }
+interface Props {
+  crumbs: Crumb[]; eyebrow: string; title: string; accent?: string; lead?: string;
+  image?: { name: string; alt: string; position?: string; label?: string; icon?: string };
+  mark?: string; curveFill?: string;
+}
+const { crumbs, eyebrow, title, accent, lead, image, mark, curveFill } = Astro.props;
+---
+<section class="page-hero on-deep pattern-lines">
+  <div class:list={['wrap page-hero-grid', { 'has-media': image }]}>
+    <div class="page-hero-copy">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{crumbs.map(c => <><Icon name="chevron" size={12} />{c.url ? <a href={c.url}>{c.title}</a> : <span aria-current="page">{c.title}</span>}</>)}</nav>
+      <span class="eyebrow">{eyebrow}</span>
+      <h1 class="title-xl">{title}{accent && <> <em>{accent}</em></>}</h1>
+      {lead && <p class="lead">{lead}</p>}
+      <slot />
+    </div>
+    {image && <div class="page-hero-media"><Photo name={image.name} alt={image.alt} position={image.position} hero sizes="(max-width: 900px) 92vw, 46vw" />{image.label && <span class="media-label"><i><Icon name={image.icon ?? 'shield'} size={18} /></i>{image.label}</span>}</div>}
+  </div>
+  {mark && <span class="page-hero-mark" aria-hidden="true">{mark}</span>}
+  <Curve fill={curveFill} />
+</section>

@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import Buttons from '../components/Buttons.astro';
+import PageHero from '../components/PageHero.astro';
+import Process from '../components/Process.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { business } from '../data/business';
+import { featuredServices, services, servicePath } from '../data/services';
+const philosophy = [
+  { title: 'Professional', text: 'A personnel-focused approach that recognises the importance of presentation, communication and clear responsibilities.' },
+  { title: 'Reliable', text: 'Discussing the details from the outset: the location, timing, scope and expectations for your service arrangement.' },
+  { title: 'Trusted', text: 'Giving you a direct contact with our team and the information you need to make an informed service enquiry.' },
+];
+const families = [...featuredServices, ...services.filter(s => !featuredServices.includes(s))];
+---
+<Layout title="About Us — Professional Driver & Security Personnel" description="Meet JSS Elite Group India: professional driver, chauffeur, valet and security personnel services for personal, corporate and event needs in Delhi NCR.">
+  <PageHero crumbs={[{ title: 'About Us' }]} eyebrow={business.name} title="People at the heart of" accent="every service." lead="Professional drivers, chauffeurs, valet and security personnel — for your journeys, your business and your important moments." image={{ name: 'team', alt: 'Chauffeurs and a security officer in dark suits standing beside black sedans', position: '50% 35%', label: 'Professional • Reliable • Trusted', icon: 'shield' }}>
+    <Buttons />
+  </PageHero>
+
+  <section class="section"><div class="wrap story-grid">
+    <figure class="story-media" data-reveal="image"><Photo name="chauffeur" alt="Chauffeur in a peaked cap driving with white-gloved hands, seen from the rear passenger seat" position="32% 50%" sizes="(max-width: 860px) 90vw, 45vw" /><figcaption>A professional presence, wherever your day takes you.</figcaption></figure>
+    <div class="story-copy" data-reveal>
+      <span class="eyebrow">Get to know us</span>
+      <h2 class="title-lg">For your journeys. Your business. <em>Your important moments.</em></h2>
+      <p class="lead">JSS Elite Group India provides the people behind professional driver, hospitality and security services.</p>
+      <p class="copy">We support service enquiries for individuals, families, organisations and events across {business.area}. Our offering includes professional drivers, chauffeurs, valet parking personnel, Personal Security Officers, bouncers and security personnel.</p>
+      <p class="copy">Whether you need a driver for your regular routine or personnel for a planned event, start with a conversation. Our team will discuss your location, schedule, service scope and availability.</p>
+      <a href="/contact-us/" class="link-arrow">Start a conversation <Icon name="arrow" size={18} /></a>
+    </div>
+  </div></section>
+
+  <section class="section on-dark pattern-lines"><div class="wrap">
+    <div class="section-head split" data-reveal><div><span class="eyebrow">Our service philosophy</span><h2 class="title-lg" style="margin-top:18px">Three words. <em>One considered approach.</em></h2></div><p class="copy">Our tagline is a simple expression of the service approach we aim to bring to every conversation.</p></div>
+    <div class="philosophy-grid">{philosophy.map((v, i) => <article data-reveal style={`--delay:${i * 110}ms`}><span>0{i + 1}</span><h3>{v.title}<b>.</b></h3><p>{v.text}</p></article>)}</div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="section-head center" data-reveal><span class="eyebrow">What we offer</span><h2 class="title-lg">Different expertise. <em>The same attention.</em></h2></div>
+    <div class="family-grid">{families.map((s, i) => <a href={servicePath(s)} class="family-card" data-reveal style={`--delay:${(i % 3) * 70}ms`}><span class="icon-badge"><Icon name={s.icon} size={22} /></span><div><h3>{s.short}</h3><p>{s.description}</p></div><Icon name="arrow" size={20} /></a>)}<a href="/contact-us/" class="family-card family-cta on-dark" data-reveal><span class="icon-badge"><Icon name="sparkle" size={22} /></span><div><h3>Not sure which service fits?</h3><p>Tell us your requirement — our team will talk it through with you.</p></div><Icon name="arrow" size={20} /></a></div>
+  </div></section>
+
+  <Process paper />
+  <ContactCTA />
+</Layout>

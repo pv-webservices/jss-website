@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import { business, whatsapp } from '../data/business';
+interface Props { compact?: boolean; message?: string; tone?: 'dark' | 'light'; }
+const { compact = false, message, tone = 'dark' } = Astro.props;
+---
+<div class="actions">
+  <a href={business.phoneLink} class:list={['btn', { 'btn-emerald': tone === 'light' }]}><Icon name="phone" size={19} /><span class="btn-label">{compact ? 'Call our team' : 'Call Now'}{!compact && <small>97111 61009</small>}</span></a>
+  <a href={whatsapp(message)} class:list={['btn', tone === 'light' ? 'btn-ghost-dark' : 'btn-ghost']} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={19} /><span class="btn-label">{compact ? 'Enquire on WhatsApp' : 'WhatsApp Now'}{!compact && <small>97111 61009</small>}</span></a>
+</div>

@@ -1,0 +1,184 @@
+{
+  "hero": {
+    "src": "gen/hero",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Uniformed chauffeur in a peaked cap and white gloves opening the rear door of a black luxury sedan at a hotel entrance",
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high"
+  },
+  "team": {
+    "src": "gen/team",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Two chauffeurs and a security officer in dark suits standing beside black sedans outside a corporate tower",
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high"
+  },
+  "portrait": {
+    "src": "gen/portrait",
+    "widths": [
+      480,
+      768,
+      1024
+    ],
+    "width": 1024,
+    "height": 1536,
+    "alt": "Chauffeur in a black suit and peaked cap adjusting his white gloves beside a luxury car",
+    "model": "gpt-image-2.5-flare",
+    "quality": "high"
+  },
+  "chauffeur": {
+    "src": "gen/chauffeur",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Chauffeur with white-gloved hands on the steering wheel of a luxury car, seen from the rear passenger seat",
+    "model": "gpt-image-2.5-flare",
+    "quality": "high"
+  },
+  "driver": {
+    "src": "gen/driver",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Professional driver in a dark suit driving a car through the city in daylight",
+    "model": "gpt-image-2.5-flare",
+    "quality": "high"
+  },
+  "valet": {
+    "src": "gen/valet",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Valet attendant receiving car keys from a guest at an illuminated hotel entrance in the evening",
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high"
+  },
+  "pso": {
+    "src": "gen/pso",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Personal security officer in a dark suit and earpiece standing alert beside a black SUV",
+    "model": "gpt-image-2.5-flare",
+    "quality": "high"
+  },
+  "bouncer": {
+    "src": "gen/bouncer",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Event security personnel in black standing at the entrance of an evening event venue with warm lights",
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high"
+  },
+  "security": {
+    "src": "gen/security",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Uniformed security officer standing at the entrance of a modern corporate building",
+    "model": "gpt-image-2.5-flare",
+    "quality": "high"
+  },
+  "monthly": {
+    "src": "gen/monthly",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Driver in a dark suit waiting beside a car in a residential driveway in the morning",
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium"
+  },
+  "hourly": {
+    "src": "gen/hourly",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Close-up of a driver checking his wristwatch with a hand on the steering wheel",
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium"
+  },
+  "outstation": {
+    "src": "gen/outstation",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Black sedan travelling on an open highway at sunrise",
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium"
+  },
+  "skyline": {
+    "src": "gen/skyline",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Delhi NCR skyline at dusk with light trails on an expressway",
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium"
+  },
+  "corporate": {
+    "src": "gen/corporate",
+    "widths": [
+      480,
+      960,
+      1536
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "Chauffeur holding the rear door as a business executive steps out of a black sedan at an office tower",
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high"
+  }
+}

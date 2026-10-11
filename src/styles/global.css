@@ -1,0 +1,6 @@
+/* JSS Elite Group India — design system entry point */
+@import "./base.css";
+@import "./components.css";
+@import "./chrome.css";
+@import "./home.css";
+@import "./pages.css";

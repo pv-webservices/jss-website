@@ -1,0 +1,23 @@
+---
+import { services } from '../data/services';
+import Icon from './Icon.astro';
+interface Props { service?: string; }
+const { service = '' } = Astro.props;
+---
+<form class="enquiry-form" data-enquiry-form>
+  <span class="eyebrow">Request a callback on WhatsApp</span><h3>Tell us what you need.</h3>
+  <p class="form-intro">Fill in a few details — we’ll prepare a WhatsApp message for you to send to our team.</p>
+  <div class="form-fields">
+    <div><label for="full-name">Full name <span aria-hidden="true">*</span></label><input id="full-name" name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Your name" /></div>
+    <div><label for="mobile-number">Mobile number <span aria-hidden="true">*</span></label><input id="mobile-number" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="98XXX XXXXX" aria-describedby="phone-hint" /><span id="phone-hint" class="field-hint">Indian mobile, with or without +91.</span></div>
+    <div class="field-wide"><label for="service-required">Service required <span aria-hidden="true">*</span></label><select id="service-required" name="service" required><option value="">Select a service</option>{services.map(s => <option value={s.title} selected={s.title === service}>{s.title}</option>)}</select></div>
+    <div class="field-wide"><label for="location">Service location <span aria-hidden="true">*</span></label><input id="location" name="location" autocomplete="address-level2" required maxlength="120" placeholder="Area, city or venue" /></div>
+    <div class="field-wide"><label for="message">Your requirement <span class="optional">(optional)</span></label><textarea id="message" name="message" maxlength="1500" rows="3" placeholder="Date, duration and anything you’d like us to know"></textarea></div>
+  </div>
+  <div class="honey-field" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
+  <p class="form-privacy">Your details are included only in the WhatsApp message you choose to send. <a href="/privacy-policy/">Privacy information</a></p>
+  <button type="submit" class="btn form-submit" disabled>Prepare WhatsApp enquiry <Icon name="arrow" size={18} class="icon-end" /></button>
+  <div class="form-feedback" role="status" aria-live="polite"></div>
+  <div class="draft-actions" hidden><a class="btn btn-whatsapp draft-link" href="https://wa.me/919711161009" target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={19} />Open WhatsApp &amp; send</a><p>WhatsApp opens with your message ready. Press send there to reach our team.</p></div>
+  <noscript><p>To enquire, call <a href="tel:+919711161009">9711161009</a> or email <a href="mailto:info@jsselitegroupindia.com">info@jsselitegroupindia.com</a>.</p></noscript>
+</form>

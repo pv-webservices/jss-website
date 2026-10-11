@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import Buttons from '../components/Buttons.astro';
+import Curve from '../components/Curve.astro';
+import Process from '../components/Process.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import generated from '../data/generated-images.json';
+import { business, whatsapp } from '../data/business';
+import { services, featuredServices, servicePath, findService, groupLabels } from '../data/services';
+
+const bento = [
+  { slug: 'driver-services', size: 'feature' },
+  { slug: 'chauffeur-services' }, { slug: 'valet-parking' }, { slug: 'pso-security-services' }, { slug: 'bouncer-event-security' },
+  { slug: 'security-services', size: 'wide' }, { slug: 'monthly-driver' }, { slug: 'outstation-driver' },
+  { slug: 'hourly-driver' }, { slug: 'corporate-personal-drivers', size: 'wide' },
+].map(item => ({ ...item, service: findService(item.slug) }));
+
+const values = [
+  { icon: 'person', title: 'A professional approach', text: 'People-focused service with attention to presentation, communication and clear responsibilities — for your personal and business requirements.' },
+  { icon: 'clock', title: 'Clear communication', text: 'Discuss the schedule, scope and service arrangements directly with our team before anything is finalised.' },
+  { icon: 'calendar', title: 'Flexible requirements', text: 'Monthly, hourly, outstation and event-oriented enquiries — arranged around your routine, journey or occasion.' },
+  { icon: 'shield', title: 'Considered service', text: 'Attention to your setting, your responsibilities and the specific needs of every driver, valet or security requirement.' },
+];
+const hasSkyline = 'skyline' in generated;
+---
+<Layout title="Professional Driver & Security Services in Delhi NCR" description="JSS Elite Group India offers professional drivers, chauffeurs, valet parking, PSO, bouncer and security personnel services in Delhi NCR. Enquire today.">
+  <!-- Hero -->
+  <section class="hero on-deep">
+    <div class="hero-media"><Photo name="hero" alt="Uniformed chauffeur holding open the rear door of a black luxury sedan at a hotel entrance" hero sizes="(max-width: 900px) 100vw, 64vw" /></div>
+    <div class="hero-veil"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-brand"><span>Jay Shri Shyam</span>Elite Group India</p>
+        <h1 class="title-xl">Premium Driver &amp; <em>Security</em> Services</h1>
+        <p class="hero-tagline">Professional <i></i> Reliable <i></i> Trusted</p>
+        <p class="hero-sub">Chauffeurs, monthly, hourly and outstation drivers, valet parking, PSO, bouncers and security personnel — for your personal, corporate and event needs.</p>
+        <Buttons />
+        <ul class="hero-facts">
+          <li><Icon name="people" size={26} /><span><strong>{services.length} specialised services</strong>Drivers, valet &amp; security</span></li>
+          <li><Icon name="calendar" size={26} /><span><strong>Monthly · Hourly · Outstation</strong>Flexible arrangements</span></li>
+          <li><Icon name="pin" size={26} /><span><strong>Delhi NCR</strong>&amp; other locations</span></li>
+        </ul>
+      </div>
+      <p class="hero-note"><span>✦</span>Professional people.<br /><em>Peace of mind.</em></p>
+    </div>
+    <Curve />
+  </section>
+
+  <!-- Quick service rail -->
+  <nav class="wrap service-rail" aria-label="Popular services"><ul>
+    {featuredServices.map(s => <li><a href={servicePath(s)}><span class="icon-badge"><Icon name={s.icon} size={24} /></span>{s.short}<Icon name="upright" size={16} class="arrow" /></a></li>)}
+  </ul></nav>
+
+  <!-- Introduction -->
+  <section class="section"><div class="wrap intro-grid">
+    <div class="intro-copy" data-reveal>
+      <span class="eyebrow">About JSS Elite Group India</span>
+      <h2 class="title-lg">Trusted driver &amp; security services across <em>Delhi NCR.</em></h2>
+      <p class="lead">Professional people. Personal attention. Driver and security services built around what matters to you.</p>
+      <p class="copy">JSS Elite Group India provides professional driver, chauffeur, valet and security personnel services for individuals, families, businesses and events across {business.area}.</p>
+      <ul class="pillars">
+        <li><span class="icon-badge sm"><Icon name="person" size={20} /></span>Professional personnel</li>
+        <li><span class="icon-badge sm"><Icon name="shield" size={20} /></span>Considered service</li>
+        <li><span class="icon-badge sm"><Icon name="briefcase" size={20} /></span>Personal &amp; corporate needs</li>
+        <li><span class="icon-badge sm"><Icon name="pin" size={20} /></span>Delhi NCR &amp; other locations</li>
+      </ul>
+      <a href="/about-us/" class="btn btn-emerald">Know more about us <Icon name="arrow" size={18} class="icon-end" /></a>
+    </div>
+    <div class="collage" data-reveal style="--delay:120ms">
+      <span class="collage-frame" aria-hidden="true"></span>
+      <div class="collage-main"><Photo name="team" alt="Chauffeurs and a security officer in dark suits standing beside black sedans outside a corporate building" sizes="(max-width: 960px) 90vw, 50vw" position="50% 35%" /></div>
+      <div class="collage-inset"><Photo name="pso" alt="Personal security officer in a dark suit standing beside a black SUV" sizes="(max-width: 960px) 34vw, 18vw" position="49% 30%" /></div>
+      <p class="collage-badge"><span class="icon-badge sm"><Icon name="shield" size={20} /></span><span><strong>Professional people</strong>Personal attention. Peace of mind.</span></p>
+    </div>
+  </div></section>
+
+  <!-- Marquee -->
+  <div class="marquee on-deep" aria-hidden="true"><div class="marquee-track">
+    {[0, 1].map(() => <ul>{services.map(s => <li>{s.short}</li>)}</ul>)}
+  </div></div>
+
+  <!-- Services bento -->
+  <section class="section on-dark pattern-lines" id="services"><div class="wrap">
+    <div class="section-head split" data-reveal>
+      <div><span class="eyebrow">Our services</span><h2 class="title-lg" style="margin-top:18px">Complete driver &amp; security <em>solutions.</em></h2></div>
+      <p class="copy">From professional drivers to personal security, we provide skilled personnel for all your personal, corporate and event requirements.</p>
+    </div>
+    <div class="bento">
+      {bento.map(({ service, size }, i) => (
+        <a href={servicePath(service)} class:list={['tile', size && `tile-${size}`]} data-reveal style={`--delay:${(i % 4) * 70}ms`}>
+          <Photo name={service.image} alt={service.alt} position={service.position} sizes={size === 'feature' ? '(max-width: 640px) 82vw, (max-width: 1000px) 90vw, 45vw' : '(max-width: 640px) 82vw, (max-width: 1000px) 45vw, 24vw'} />
+          <span class="tile-arrow"><Icon name="upright" size={18} /></span>
+          <span class="tile-group"><Icon name={service.icon} size={15} />{groupLabels[service.group]}</span>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </a>
+      ))}
+      <div class="tile tile-cta" data-reveal style="--delay:210ms">
+        <div><span class="tile-group" style="color:var(--emerald-800)"><Icon name="sparkle" size={15} />Not sure which fits?</span><h3>Tell us your requirement.</h3><p>Share the service, location and timing — our team will discuss the right arrangement.</p></div>
+        <div class="actions"><a href={business.phoneLink} class="btn btn-emerald"><Icon name="phone" size={16} />Call</a><a href={whatsapp()} class="btn btn-ghost-dark" target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={16} />WhatsApp</a></div>
+      </div>
+    </div>
+    <p class="swipe-hint"><Icon name="swipe" size={16} />Swipe to explore all services</p>
+    <div class="services-foot"><a href="/our-services/" class="btn btn-ghost">Explore all services <Icon name="arrow" size={18} class="icon-end" /></a></div>
+  </div></section>
+
+  <!-- Why choose us -->
+  <section class="section"><div class="wrap">
+    <div class="why-grid">
+      <figure class="why-media" data-reveal="image"><Photo name="portrait" alt="Chauffeur in a black suit and peaked cap adjusting his white gloves beside a luxury car" sizes="(max-width: 960px) 90vw, 40vw" position="60% 30%" /><figcaption><span class="icon-badge sm"><Icon name="shield" size={20} /></span><span>Your requirements. <em>Our attention.</em></span></figcaption></figure>
+      <div>
+        <div class="section-head" style="margin-bottom:0" data-reveal><span class="eyebrow">Why choose us</span><h2 class="title-lg">Why clients trust <em>JSS Elite Group India.</em></h2><p class="copy">A professional presence. A clear conversation. An arrangement that understands your needs.</p></div>
+        <ol class="why-list">{values.map((v, i) => <li data-reveal><span class="why-num">0{i + 1}</span><div><h3><Icon name={v.icon} size={22} />{v.title}</h3><p>{v.text}</p></div></li>)}</ol>
+        <a href="/contact-us/" class="link-arrow" style="margin-top:28px">Discuss your requirement <Icon name="arrow" size={18} /></a>
+      </div>
+    </div>
+    <div class="trust-band on-dark" data-reveal>
+      <div><Icon name="people" size={32} /><span><strong>Professional</strong>people</span></div>
+      <div><Icon name="calendar" size={32} /><span><strong>Flexible</strong>requirements</span></div>
+      <div><Icon name="pin" size={32} /><span><strong>Delhi NCR</strong>&amp; other locations</span></div>
+      <div><Icon name="briefcase" size={32} /><span><strong>Personal, corporate</strong>&amp; event services</span></div>
+    </div>
+  </div></section>
+
+  <!-- Occasions -->
+  <section class="section on-sand"><div class="wrap">
+    <div class="section-head split" data-reveal><div><span class="eyebrow">For every occasion</span><h2 class="title-lg" style="margin-top:18px">Different needs. <em>One professional approach.</em></h2></div><p class="copy">From the everyday commute to an important event, find the personnel service that fits your plans.</p></div>
+    <div class="occasion-grid">
+      <a href="/corporate-personal-drivers/" class="occasion" data-reveal><Photo name="corporate" alt="Chauffeur holding the rear door as a business executive steps out of a sedan at an office tower" position="40% 45%" sizes="(max-width: 560px) 90vw, 45vw" /><span class="kicker">01 / Executive &amp; everyday travel</span><h3>For the journeys that matter.</h3><span class="go"><i><Icon name="arrow" size={18} /></i>Corporate &amp; personal drivers</span></a>
+      <a href="/valet-parking/" class="occasion" data-reveal style="--delay:100ms"><Photo name="valet" alt="Valet attendant receiving car keys from a guest at a hotel entrance" position="30% 50%" sizes="(max-width: 560px) 90vw, 30vw" /><span class="kicker">02 / Hospitality &amp; occasions</span><h3>A considered welcome.</h3><span class="go"><i><Icon name="arrow" size={18} /></i>Valet parking</span></a>
+      <a href="/bouncer-event-security/" class="occasion" data-reveal style="--delay:200ms"><Photo name="bouncer" alt="Event security personnel at the entrance of an evening venue" position="22% 40%" sizes="(max-width: 560px) 90vw, 30vw" /><span class="kicker">03 / Events &amp; security</span><h3>A professional presence.</h3><span class="go"><i><Icon name="arrow" size={18} /></i>Bouncer services</span></a>
+    </div>
+  </div></section>
+
+  <Process />
+
+  <!-- Service area -->
+  <section class="section area on-deep pattern-lines">
+    {hasSkyline && <div class="area-bg"><Photo name="skyline" alt="" sizes="100vw" /></div>}
+    <div class="wrap area-grid">
+      <div class="area-copy" data-reveal>
+        <span class="eyebrow">Service area</span>
+        <h2 class="title-lg">Delhi NCR. <em>And your next requirement.</em></h2>
+        <p class="lead">Our service area is Delhi NCR &amp; Other Locations. Share your exact location with our team to discuss availability and the right arrangement.</p>
+        <a href="/contact-us/" class="btn">Check availability for your location <Icon name="arrow" size={18} class="icon-end" /></a>
+      </div>
+      <div class="radar" data-reveal style="--delay:150ms" aria-hidden="true"><i></i><i></i><i></i><b></b><b></b><b></b><b></b><div class="radar-center"><Icon name="pin" size={30} /><strong>Delhi NCR</strong><span>&amp; Other Locations</span></div></div>
+    </div>
+  </section>
+
+  <FAQ />
+  <ContactCTA />
+</Layout>

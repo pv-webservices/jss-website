@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import Buttons from '../components/Buttons.astro';
+import PageHero from '../components/PageHero.astro';
+import Process from '../components/Process.astro';
+import FAQ from '../components/FAQ.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { services, servicePath, groupLabels } from '../data/services';
+import { business, whatsapp } from '../data/business';
+export function getStaticPaths() { return services.map(service => ({ params: { service: service.slug }, props: { service } })); }
+const { service } = Astro.props;
+const related = services.filter(s => s.slug !== service.slug && (s.group === service.group || service.group === 'hospitality' && ['chauffeur-services', 'bouncer-event-security', 'corporate-personal-drivers'].includes(s.slug))).slice(0, 3);
+const isSecurity = service.group === 'security';
+const overviewTitle = isSecurity ? ['The right conversation.', 'A clear service scope.'] : service.group === 'hospitality' ? ['A welcome worth planning.', 'The right personnel.'] : ['Your plans. Your schedule.', 'The right personnel.'];
+const usesTitle = { monthly: 'A part of your routine.', hourly: 'A few hours. Many possibilities.', valet: 'Every arrival sets the tone.', outstation: 'A journey planned around you.' }[service.theme] ?? 'Professional support for your plans.';
+const briefTitle = service.theme === 'outstation' ? 'Let’s plan the complete itinerary.' : isSecurity ? 'Start with a clear brief.' : service.theme === 'hourly' ? 'Make the most of your time.' : 'A few details make all the difference.';
+const enquiry = `Hello JSS Elite Group India, I would like to enquire about ${service.title}.`;
+---
+<Layout title={`${service.title} in Delhi NCR`} description={`${service.intro} Contact JSS Elite Group India on 9711161009 to discuss availability, scope and service arrangements.`} service={service.title}>
+  <PageHero crumbs={[{ title: 'Our Services', url: '/our-services/' }, { title: service.short }]} eyebrow={service.title} title={service.heading} accent={service.accent} lead={service.intro} image={{ name: service.image, alt: service.alt, position: service.position, label: service.short, icon: service.icon }}>
+    <Buttons message={enquiry} />
+    <div class="chips"><span class="chip"><Icon name="pin" size={14} />{business.area}</span><span class="chip"><Icon name={service.icon} size={14} />{groupLabels[service.group]}</span></div>
+  </PageHero>
+
+  <section class="section"><div class="wrap overview-grid">
+    <div data-reveal><span class="eyebrow">Built around your requirement</span><h2 class="title-lg" style="margin-top:18px">{overviewTitle[0]} <em>{overviewTitle[1]}</em></h2></div>
+    <div class="overview-body" data-reveal style="--delay:100ms">
+      <p class="lead">{service.detail}</p>
+      <ul class="fit-list">{service.uses.map(u => <li class="chip"><Icon name="check" size={14} />{u.title}</li>)}</ul>
+      <a href="#enquire" class="link-arrow">Share your requirement <Icon name="arrow" size={18} /></a>
+    </div>
+  </div></section>
+
+  {service.theme === 'corporate' ? (
+    <section class="section on-paper"><div class="wrap paths-grid">
+      {['Corporate', 'Personal'].map((type, i) => (
+        <article class:list={['path-card', { 'on-dark pattern-lines': i === 0 }]} data-reveal style={`--delay:${i * 100}ms`}>
+          <span class="icon-badge"><Icon name={i === 0 ? 'briefcase' : 'person'} size={24} /></span>
+          <span class="eyebrow">{type} enquiries</span>
+          <h2>{i === 0 ? 'Support for your business.' : 'Support for your everyday.'}</h2>
+          <p>{i === 0 ? 'Discuss executive travel, driver personnel numbers, reporting locations and recurring business schedules.' : 'Discuss personal journeys, family schedules, appointments and your recurring driving needs.'}</p>
+          <a href={whatsapp(`Hello JSS Elite Group India, I have a ${type.toLowerCase()} driver requirement. I would like to discuss the schedule and availability.`)} class:list={['btn', { 'btn-emerald': i === 1 }]} target="_blank" rel="noopener noreferrer">{type} driver enquiry <Icon name="arrow" size={18} class="icon-end" /></a>
+        </article>
+      ))}
+    </div></section>
+  ) : (
+    <section class:list={['section', isSecurity ? 'on-dark pattern-lines' : 'on-paper']}><div class="wrap">
+      <div class="section-head center" data-reveal><span class="eyebrow">Where this service fits</span><h2 class="title-lg">{usesTitle}</h2></div>
+      <div class="use-grid">{service.uses.map((use, i) => <article class="use-card" data-reveal style={`--delay:${i * 90}ms`} id={isSecurity ? use.title.toLowerCase().replaceAll(' ', '-') : undefined}><span class="num">0{i + 1}</span><span class="icon-badge"><Icon name={service.icon} size={24} /></span><h3>{use.title}</h3><p>{use.text}</p></article>)}</div>
+    </div></section>
+  )}
+
+  {service.slug === 'driver-services' && (
+    <section class="section"><div class="wrap">
+      <div class="section-head split" data-reveal><div><span class="eyebrow">Choose your arrangement</span><h2 class="title-lg" style="margin-top:18px">A driver service <em>for your schedule.</em></h2></div><p class="copy">Explore the duration or setting that suits your requirement, then talk to us about the details.</p></div>
+      <div class="option-grid">{services.filter(s => ['monthly-driver', 'hourly-driver', 'outstation-driver', 'chauffeur-services'].includes(s.slug)).map((s, i) => <a href={servicePath(s)} class="option-card" data-reveal style={`--delay:${i * 80}ms`}><span class="icon-badge"><Icon name={s.icon} size={24} /></span><h3>{s.short}</h3><p>{s.description}</p><span class="more">Explore <Icon name="arrow" size={16} /></span></a>)}</div>
+    </div></section>
+  )}
+
+  {service.theme === 'valet' && (
+    <section class="banner">
+      <Photo name="hero" alt="Chauffeur holding a car door open at a hotel entrance" sizes="100vw" />
+      <div class="wrap" data-reveal><span class="eyebrow light">Hospitality is in the details</span><h2 class="title-lg light-heading">A professional first impression. <em>Before they reach the door.</em></h2><a href="#enquire" class="btn">Plan your valet staffing <Icon name="arrow" size={18} class="icon-end" /></a></div>
+    </section>
+  )}
+
+  <section class="section on-sand"><div class="wrap brief-grid">
+    <div class="brief-copy" data-reveal>
+      <span class="eyebrow">Before we speak</span>
+      <h2 class="title-lg">{briefTitle}</h2>
+      <p class="copy">Share these details to help our team discuss your requirement. Availability, scope and charges are confirmed directly before an arrangement is finalised.</p>
+      <Buttons compact tone="light" message={enquiry} />
+      <a href={`mailto:${business.email}?subject=${encodeURIComponent(`${service.title} enquiry`)}`} class="link-arrow">Prefer email? Write to us <Icon name="arrow" size={18} /></a>
+    </div>
+    <div class="brief-card" data-reveal style="--delay:120ms"><h3>Your enquiry checklist</h3><ol>{service.brief.map((item, i) => <li><span>0{i + 1}</span>{item}<Icon name="check" size={18} /></li>)}</ol></div>
+  </div></section>
+
+  <Process />
+  <FAQ faqs={service.faqs} title={`Your ${service.short.toLowerCase()} questions, answered.`} />
+
+  <section class="section"><div class="wrap">
+    <div class="section-head split" data-reveal><div><span class="eyebrow">You may also need</span><h2 class="title-lg" style="margin-top:18px">Explore <em>related services.</em></h2></div><a href="/our-services/" class="link-arrow">All services <Icon name="arrow" size={18} /></a></div>
+    <div class="related-grid">{related.map((s, index) => <ServiceCard service={s} index={index} />)}</div>
+  </div></section>
+
+  <ContactCTA service={service.title} />
+</Layout>

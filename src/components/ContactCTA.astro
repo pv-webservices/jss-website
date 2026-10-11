@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import EnquiryForm from './EnquiryForm.astro';
+import { business, whatsapp } from '../data/business';
+interface Props { service?: string; }
+const { service } = Astro.props;
+const message = service ? `Hello JSS Elite Group India, I would like to enquire about ${service}.` : undefined;
+---
+<section class="section on-dark pattern-lines" id="enquire"><div class="wrap cta-grid">
+  <div class="cta-copy" data-reveal>
+    <span class="eyebrow">Get in touch</span>
+    <h2 class="title-lg">Book your driver or <em>security service</em> today.</h2>
+    <p class="lead">Share your service, location, date and duration. Our team will discuss the options, availability and arrangements with you.</p>
+    <div class="contact-tiles">
+      <a class="contact-tile" href={business.phoneLink}><span class="icon-badge sm"><Icon name="phone" size={18} /></span><span><small>Call now</small><strong>97111 61009</strong></span></a>
+      <a class="contact-tile" href={whatsapp(message)} target="_blank" rel="noopener noreferrer"><span class="icon-badge sm"><Icon name="whatsapp" size={18} /></span><span><small>WhatsApp</small><strong>97111 61009</strong></span></a>
+      <a class="contact-tile" href={business.alternateLink}><span class="icon-badge sm"><Icon name="phone" size={18} /></span><span><small>Alternate</small><strong>99111 56199</strong></span></a>
+      <a class="contact-tile wide" href={`mailto:${business.email}`}><span class="icon-badge sm"><Icon name="mail" size={18} /></span><span><small>Email us</small><strong>{business.email}</strong></span></a>
+    </div>
+    <span class="cta-area"><Icon name="pin" size={18} />Serving {business.area}</span>
+  </div>
+  <div data-reveal style="--delay:120ms"><EnquiryForm service={service} /></div>
+</div></section>

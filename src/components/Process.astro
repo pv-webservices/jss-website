@@ -1,0 +1,10 @@
+---
+import { steps } from '../data/business';
+import Icon from './Icon.astro';
+interface Props { paper?: boolean; }
+const { paper = false } = Astro.props;
+---
+<section class:list={['section', { 'on-paper': paper }]} id="process"><div class="wrap">
+  <div class="section-head center" data-reveal><span class="eyebrow">How it works</span><h2 class="title-lg">Good service starts with <em>a conversation.</em></h2><p class="copy">Four simple steps from your first enquiry to your service arrangement.</p></div>
+  <ol class="process-steps" data-reveal="fade">{steps.map((step, i) => <li data-reveal style={`--delay:${200 + i * 140}ms`}><span class="process-icon"><Icon name={step.icon} size={28} /></span><span class="step-num">Step 0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+</div></section>

@@ -1,0 +1,9 @@
+---
+// Gold-edged sweep that hands a dark hero over to the next (light) section — a nod to the logo's swoosh.
+interface Props { fill?: string; }
+const { fill = '#f8f3ea' } = Astro.props;
+---
+<svg class="hero-curve" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 34C280 112 620 104 900 62S1300 18 1440 38V100H0Z" fill="#c99a3e" />
+  <path d="M0 46C280 122 620 114 900 74S1300 30 1440 50V100H0Z" fill={fill} />
+</svg>

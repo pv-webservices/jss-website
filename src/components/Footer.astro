@@ -1,0 +1,42 @@
+---
+import { business, socialLinks, whatsapp } from '../data/business';
+import { services, servicePath } from '../data/services';
+import Icon from './Icon.astro';
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cta">
+      <h2>Need a driver or security personnel? <em>Let’s talk.</em></h2>
+      <div class="actions">
+        <a href={business.phoneLink} class="btn"><Icon name="phone" size={18} /><span class="btn-label">Call Now<small>97111 61009</small></span></a>
+        <a href={whatsapp()} class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={18} /><span class="btn-label">WhatsApp Now<small>97111 61009</small></span></a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="JSS Elite Group India home"><img src="/images/logo-clean.webp" alt="JSS Elite Group India" width="520" height="233" loading="lazy" /></a>
+        <strong>{business.name}</strong>
+        <p>Professional driver, chauffeur, valet and security personnel for personal, corporate and event requirements.</p>
+      </div>
+      <nav aria-label="Quick links"><h3>Quick links</h3><ul>
+        <li><a href="/">Home</a></li><li><a href="/about-us/">About Us</a></li><li><a href="/our-services/">Our Services</a></li><li><a href="/contact-us/">Contact Us</a></li><li><a href="/privacy-policy/">Privacy Information</a></li>
+      </ul></nav>
+      <nav aria-label="Our services"><h3>Our services</h3><ul class="footer-services">{services.map(s => <li><a href={servicePath(s)}>{s.short}</a></li>)}</ul></nav>
+      <div class="footer-contact"><h3>Contact details</h3>
+        <a href={business.phoneLink}><Icon name="phone" size={16} />97111 61009</a>
+        <a href={business.alternateLink}><Icon name="phone" size={16} />99111 56199</a>
+        <a href={`mailto:${business.email}`}><Icon name="mail" size={16} />{business.email}</a>
+        <span><Icon name="pin" size={16} />{business.area}</span>
+        {socialLinks.length > 0 && <div class="social-links">{socialLinks.map(s => <a href={s.url} aria-label={s.name} target="_blank" rel="noopener noreferrer"><Icon name={s.icon} size={18} /></a>)}</div>}
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} JSS Elite Group India. All rights reserved.</span><span>Professional<b>•</b>Reliable<b>•</b>Trusted</span></div>
+  </div>
+  <span class="footer-mark" aria-hidden="true">JSS</span>
+</footer>
+<a class="floating-whatsapp" href={whatsapp()} target="_blank" rel="noopener noreferrer" aria-label="Enquire with JSS Elite Group India on WhatsApp"><Icon name="whatsapp" size={26} /><span>Let’s talk</span></a>
+<nav class="mobile-contact-bar" aria-label="Quick contact">
+  <a href={business.phoneLink}><Icon name="phone" size={18} />Call</a>
+  <a href={whatsapp()} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={18} />WhatsApp</a>
+  <a href="/contact-us/#enquiry"><Icon name="document" size={18} />Enquire</a>
+</nav>

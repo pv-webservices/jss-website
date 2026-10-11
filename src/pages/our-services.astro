@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Buttons from '../components/Buttons.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { servicesInGroup } from '../data/services';
+const groups = [
+  { id: 'drivers', key: 'driver', label: '01 / Driver & chauffeur solutions', title: 'The person behind', accent: 'your next journey.', text: 'Professional driver personnel for everyday travel, executive requirements and flexible schedules.', message: 'a driver or chauffeur' },
+  { id: 'security', key: 'security', label: '02 / Security solutions', title: 'A professional presence.', accent: 'A considered approach.', text: 'Discuss PSO, personal, corporate and event security staffing requirements with our team.', message: 'a security personnel' },
+  { id: 'hospitality', key: 'hospitality', label: '03 / Hospitality & event support', title: 'Your guests’ first impression.', accent: 'Thoughtfully supported.', text: 'Valet parking personnel for hospitality environments, special occasions and corporate functions.', message: 'a valet parking' },
+] as const;
+---
+<Layout title="Our Services — Drivers, Chauffeurs, Valet & Security" description="Explore all ten JSS Elite Group India services: professional drivers, chauffeurs, monthly, hourly, outstation drivers, valet, PSO, bouncer and security personnel.">
+  <PageHero crumbs={[{ title: 'Our Services' }]} eyebrow="Professional personnel. Personal attention." title="The right service." accent="For your requirement." lead="Driver, chauffeur, valet and security solutions for personal, corporate and event needs." mark="10">
+    <div class="jump-links">{groups.map(g => <a href={`#${g.id}`}>{g.label.split(' / ')[1]} <Icon name="down" size={15} /></a>)}</div>
+  </PageHero>
+  {groups.map((group, i) => (
+    <section class:list={['section', { 'on-dark pattern-lines': i === 1 }]} id={group.id}><div class="wrap">
+      <div class="section-head split" data-reveal><div><span class="eyebrow">{group.label}</span><h2 class="title-lg" style="margin-top:18px">{group.title} <em>{group.accent}</em></h2></div><p class="copy">{group.text}</p></div>
+      <div class:list={['directory-grid', { single: group.key === 'hospitality' }]}>{servicesInGroup(group.key).map((s, index) => <ServiceCard service={s} index={index} />)}</div>
+      <div class="directory-cta" data-reveal><p>Share the details. We’ll discuss your service options.</p><Buttons compact tone={i === 1 ? 'dark' : 'light'} message={`Hello JSS Elite Group India, I would like to discuss ${group.message} requirement.`} /></div>
+    </div></section>
+  ))}
+  <ContactCTA />
+</Layout>

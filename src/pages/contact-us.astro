@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import FAQ from '../components/FAQ.astro';
+import { business, whatsapp, socialLinks } from '../data/business';
+const methods = [
+  { href: business.phoneLink, icon: 'phone', label: 'Primary mobile', value: '97111 61009' },
+  { href: business.alternateLink, icon: 'phone', label: 'Alternate mobile', value: '99111 56199' },
+  { href: whatsapp(), icon: 'whatsapp', label: 'WhatsApp', value: 'Start a conversation', external: true },
+  { href: `mailto:${business.email}`, icon: 'mail', label: 'Email us', value: business.email },
+];
+---
+<Layout title="Contact Us — Driver & Security Service Enquiries" description="Contact JSS Elite Group India for driver, chauffeur, valet and security service enquiries. Call or WhatsApp 9711161009. Serving Delhi NCR & Other Locations.">
+  <PageHero crumbs={[{ title: 'Contact Us' }]} eyebrow="Let’s start a conversation" title="Tell us what you need." accent="We’re here to talk." lead="Professional driver, valet and security personnel. One team to discuss your requirements." />
+  <section class="section" id="enquiry"><div class="wrap contact-grid">
+    <div data-reveal>
+      <span class="eyebrow">Your direct contact</span>
+      <h2 class="title-lg" style="margin-top:18px">Personal attention. <em>From the first call.</em></h2>
+      <p class="copy" style="margin-top:18px">Share your service, location, date and duration. We’ll discuss the options and arrangements with you.</p>
+      <div class="contact-list">{methods.map(m => <a class="contact-row" href={m.href} target={m.external ? '_blank' : undefined} rel={m.external ? 'noopener noreferrer' : undefined}><span class="icon-badge"><Icon name={m.icon} size={22} /></span><span><small>{m.label}</small><strong>{m.value}</strong></span><Icon name="arrow" size={20} /></a>)}</div>
+      <div class="area-note"><Icon name="pin" size={24} /><div><h3>{business.area}</h3><p>Share your exact location to confirm service availability.</p></div></div>
+      {socialLinks.length > 0 && <div class="actions" style="margin-top:20px">{socialLinks.map(s => <a href={s.url} class="link-arrow" target="_blank" rel="noopener noreferrer"><Icon name={s.icon} size={18} />{s.name}</a>)}</div>}
+      <p class="official-name">{business.name}<span>Professional • Reliable • Trusted</span></p>
+    </div>
+    <div class="contact-form-sticky" data-reveal style="--delay:120ms"><EnquiryForm /></div>
+  </div></section>
+  <FAQ />
+</Layout>
