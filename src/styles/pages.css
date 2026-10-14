@@ -57,7 +57,8 @@
 
 .paths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .path-card { display: grid; gap: 18px; justify-items: start; padding: clamp(32px, 4vw, 56px); border-radius: var(--r-lg); background: var(--paper); border: 1px solid var(--line); }
-.path-card.on-dark { border-color: transparent; }
+.path-card.on-dark { background: var(--emerald-900); border-color: transparent; }
+.path-card.on-dark h2 { color: #fff; }
 .path-card h2 { font-size: clamp(1.8rem, 2.6vw, 2.5rem); }
 .path-card p { color: var(--muted); max-width: 46ch; }
 .path-card.on-dark p { color: var(--muted-light); }
