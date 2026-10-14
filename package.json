@@ -12,6 +12,7 @@
     "images:plan": "node scripts/generate-images.mjs --plan",
     "images:generate": "node scripts/generate-images.mjs",
     "images:optimise": "node scripts/generate-images.mjs --optimise",
+    "images:field": "node scripts/prepare-field-photos.mjs",
     "images:stock": "node scripts/prepare-images.mjs && node scripts/prepare-logo.mjs"
   },
   "dependencies": {

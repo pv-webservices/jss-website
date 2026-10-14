@@ -1,0 +1,176 @@
+{
+  "field-valet-1": {
+    "src": "field/valet-1",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1600,
+    "height": 721
+  },
+  "field-valet-2": {
+    "src": "field/valet-2",
+    "widths": [
+      480,
+      960,
+      1599
+    ],
+    "width": 1599,
+    "height": 719
+  },
+  "field-valet-3": {
+    "src": "field/valet-3",
+    "widths": [
+      480,
+      960,
+      1599
+    ],
+    "width": 1599,
+    "height": 719
+  },
+  "field-bouncer-1": {
+    "src": "field/bouncer-1",
+    "widths": [
+      480,
+      720
+    ],
+    "width": 720,
+    "height": 540
+  },
+  "field-bouncer-2": {
+    "src": "field/bouncer-2",
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "width": 1080,
+    "height": 810
+  },
+  "field-bouncer-3": {
+    "src": "field/bouncer-3",
+    "widths": [
+      480,
+      720
+    ],
+    "width": 720,
+    "height": 540
+  },
+  "field-security-1": {
+    "src": "field/security-1",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1600,
+    "height": 900
+  },
+  "field-pso-1": {
+    "src": "field/pso-1",
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "width": 1080,
+    "height": 636
+  },
+  "field-pso-2": {
+    "src": "field/pso-2",
+    "widths": [
+      480,
+      717
+    ],
+    "width": 717,
+    "height": 714
+  },
+  "field-pso-3": {
+    "src": "field/pso-3",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 960,
+    "height": 1280
+  },
+  "field-pso-4": {
+    "src": "field/pso-4",
+    "widths": [
+      480,
+      744
+    ],
+    "width": 744,
+    "height": 1280
+  },
+  "field-driver-1": {
+    "src": "field/driver-1",
+    "widths": [
+      480,
+      960,
+      1537
+    ],
+    "width": 1537,
+    "height": 1023
+  },
+  "valet": {
+    "src": "field/valet-3",
+    "widths": [
+      480,
+      960,
+      1599
+    ],
+    "width": 1599,
+    "height": 719
+  },
+  "bouncer": {
+    "src": "field/bouncer-1",
+    "widths": [
+      480,
+      720
+    ],
+    "width": 720,
+    "height": 540
+  },
+  "pso": {
+    "src": "field/pso-1",
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "width": 1080,
+    "height": 636
+  },
+  "security": {
+    "src": "field/security-1",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1600,
+    "height": 900
+  },
+  "driver": {
+    "src": "field/driver-1",
+    "widths": [
+      480,
+      960,
+      1537
+    ],
+    "width": 1537,
+    "height": 1023
+  },
+  "team": {
+    "src": "field/security-1",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1600,
+    "height": 900
+  }
+}
