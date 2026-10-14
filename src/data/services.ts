@@ -7,7 +7,7 @@ export type Service = {
 };
 export const services: Service[] = [
   {
-    slug: 'driver-services', title: 'Professional Driver Services', short: 'Driver Services', group: 'driver', icon: 'wheel', image: 'driver', alt: 'Professional driver in a dark suit driving a car through the city in daylight', position: '62% 45%',
+    slug: 'driver-services', title: 'Professional Driver Services', short: 'Driver Services', group: 'driver', icon: 'wheel', image: 'driver', alt: 'Five JSS Drivers India team members in orange uniform shirts and khaki trousers standing with arms folded beside a row of parked cars', position: '30% 40%',
     description: 'Experienced drivers for your everyday journeys and personal requirements.',
     heading: 'Every journey deserves', accent: 'a professional.',
     intro: 'Professional driver services for your everyday and executive needs across Delhi NCR.',
@@ -27,7 +27,7 @@ export const services: Service[] = [
     faqs: [{ q: 'Does the service include a luxury car?', a: 'The service is for chauffeur personnel. Please discuss your vehicle arrangements with our team; no particular vehicle or brand is included or promised.' }, { q: 'Can I enquire for a corporate event?', a: 'Yes. Share your itinerary, date, location and chauffeur requirements. Our team will discuss availability and arrangements.' }], theme: 'chauffeur',
   },
   {
-    slug: 'valet-parking', title: 'Valet Parking Services', short: 'Valet Parking', group: 'hospitality', icon: 'parking', image: 'valet', alt: 'Valet attendant receiving car keys from a guest at an illuminated hotel entrance in the evening', position: '35% 50%',
+    slug: 'valet-parking', title: 'Valet Parking Services', short: 'Valet Parking', group: 'hospitality', icon: 'parking', image: 'valet', alt: 'Ten valet attendants in white shirts, black ties and JSS Elite Group India caps standing around a valet parking sign at an evening venue', position: '55% 50%',
     description: 'Valet personnel for hospitality venues, private functions and events.',
     heading: 'A warm welcome.', accent: 'From the first arrival.',
     intro: 'Professional valet parking personnel for events, hospitality and corporate venues.',
@@ -37,7 +37,7 @@ export const services: Service[] = [
     faqs: [{ q: 'What should I share for a valet enquiry?', a: 'Provide the venue, event date, expected vehicle volume, parking layout and service hours. These details help our team discuss your staffing requirements.' }, { q: 'Are parking equipment or insurance included?', a: 'Please discuss all operational requirements, responsibilities and terms with our team before confirming. Equipment or insurance is not automatically included.' }], theme: 'valet',
   },
   {
-    slug: 'pso-security-services', title: 'PSO (Personal Security Officer)', short: 'PSO Services', group: 'security', icon: 'person', image: 'pso', alt: 'Personal security officer in a dark suit and earpiece standing alert beside a black SUV', position: '50% 30%',
+    slug: 'pso-security-services', title: 'PSO (Personal Security Officer)', short: 'PSO Services', group: 'security', icon: 'person', image: 'pso', alt: 'Seven security personnel in dark clothing standing beside luxury SUVs in an indoor showroom', position: '55% 40%',
     description: 'Personal security officer enquiries for individuals and executive requirements.',
     heading: 'Personal security.', accent: 'A professional approach.',
     intro: 'PSO and personal security personnel services for your individual or corporate requirements.',
@@ -47,7 +47,7 @@ export const services: Service[] = [
     faqs: [{ q: 'How do I discuss a PSO requirement?', a: 'Call our team with the location, duration and broad service scope. Detailed requirements can then be discussed directly.' }, { q: 'Can you guarantee a particular security outcome?', a: 'Service scope, suitability and responsibilities must be discussed before confirmation. No service can promise the elimination of all risks.' }], theme: 'security',
   },
   {
-    slug: 'bouncer-event-security', title: 'Bouncer Services', short: 'Bouncer Services', group: 'security', icon: 'people', image: 'bouncer', alt: 'Event security personnel in black standing at the entrance of a decorated evening venue', position: '25% 35%',
+    slug: 'bouncer-event-security', title: 'Bouncer Services', short: 'Bouncer Services', group: 'security', icon: 'people', image: 'bouncer', alt: 'Eight event security personnel in black shirts standing with arms folded in front of a brightly decorated evening venue', position: '50% 40%',
     description: 'Professionally presented personnel for private and corporate events.',
     heading: 'Your event.', accent: 'Professionally supported.',
     intro: 'Bouncer and event security personnel for private functions, corporate occasions and venues.',
@@ -57,7 +57,7 @@ export const services: Service[] = [
     faqs: [{ q: 'Can I enquire for a private event?', a: 'Yes. Share the venue, date, guest numbers and intended duties. The team will discuss personnel availability and the scope of support.' }, { q: 'How many personnel will I need?', a: 'This depends on your event and venue. Discuss the layout, attendance, timings and responsibilities with our team before deciding on staffing.' }], theme: 'event',
   },
   {
-    slug: 'security-services', title: 'Security Services', short: 'Security Services', group: 'security', icon: 'shield', image: 'security', alt: 'Uniformed security officer standing at the glass entrance of a modern corporate building', position: '35% 40%',
+    slug: 'security-services', title: 'Security Services', short: 'Security Services', group: 'security', icon: 'shield', image: 'security', alt: 'Ten JSS security personnel in navy uniforms and orange ID lanyards standing in front of a corporate tower entrance', position: '50% 35%',
     description: 'Security personnel for personal, corporate and event requirements.',
     heading: 'People you can speak to.', accent: 'Support you can plan.',
     intro: 'Professional security personnel services across Delhi NCR & Other Locations.',

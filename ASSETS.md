@@ -6,6 +6,10 @@
 - `F:/Z-Clients/Indian Clients/Business Website Clients/jss-website/JSS Elite Group Homepage UI.png`: supplied visual reference. Used for composition, palette, curved gold section transitions, overlapping service navigation and emerald service grid. Its incidental text, testimonials, credentials and location claims were not copied.
 - Pasted development document: treated as reference material accompanying the user's build request. The user's directly supplied company name, services, contacts and service area remain the factual source of truth.
 
+## Company photography
+
+Twelve photographs supplied by JSS Elite Group India are used for the service heroes, the homepage collage and a "From the field" gallery on the valet, bouncer and PSO pages. Originals are in `assets/field/`; `npm run images:field` writes responsive WebP files to `public/images/field/` and `src/data/field-photos.json`. `<Photo>` prefers these over generated or stock images, so the names `valet`, `bouncer`, `pso`, `security`, `driver` and `team` now resolve to company photos. Gallery selection and alt text live in `src/data/field-gallery.ts`. Several photos show vehicle number plates and one shows armed personnel; confirm the client is comfortable with both before launch.
+
 ## Illustrative stock photography
 
 Stock images communicate service settings; they do not identify JSS employees, clients, owned vehicles or actual company events. Images are downloaded locally and served as responsive WebP files. None are relabelled as company photography.

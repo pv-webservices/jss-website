@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
 import Curve from './Curve.astro';
+import field from '../data/field-photos.json';
 interface Crumb { title: string; url?: string; }
 interface Props {
   crumbs: Crumb[]; eyebrow: string; title: string; accent?: string; lead?: string;
@@ -9,6 +10,9 @@ interface Props {
   mark?: string; curveFill?: string;
 }
 const { crumbs, eyebrow, title, accent, lead, image, mark, curveFill } = Astro.props;
+// Real photographs are often wider than the generated 3:2 imagery; let the frame follow them up to 16:10.
+const photo = image && (field as Record<string, { width: number; height: number }>)[image.name];
+const ratio = photo ? Math.min(Math.max(photo.width / photo.height, 1.21), 1.6).toFixed(2) : undefined;
 ---
 <section class="page-hero on-deep pattern-lines">
   <div class:list={['wrap page-hero-grid', { 'has-media': image }]}>
@@ -19,7 +23,7 @@ const { crumbs, eyebrow, title, accent, lead, image, mark, curveFill } = Astro.p
       {lead && <p class="lead">{lead}</p>}
       <slot />
     </div>
-    {image && <div class="page-hero-media"><Photo name={image.name} alt={image.alt} position={image.position} hero sizes="(max-width: 900px) 92vw, 46vw" />{image.label && <span class="media-label"><i><Icon name={image.icon ?? 'shield'} size={18} /></i>{image.label}</span>}</div>}
+    {image && <div class="page-hero-media" style={ratio ? `--hero-ratio:${ratio}` : undefined}><Photo name={image.name} alt={image.alt} position={image.position} hero sizes="(max-width: 900px) 92vw, 46vw" />{image.label && <span class="media-label"><i><Icon name={image.icon ?? 'shield'} size={18} /></i>{image.label}</span>}</div>}
   </div>
   {mark && <span class="page-hero-mark" aria-hidden="true">{mark}</span>}
   <Curve fill={curveFill} />

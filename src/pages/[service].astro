@@ -10,6 +10,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { services, servicePath, groupLabels } from '../data/services';
 import { business, whatsapp } from '../data/business';
+import { fieldGallery } from '../data/field-gallery';
 export function getStaticPaths() { return services.map(service => ({ params: { service: service.slug }, props: { service } })); }
 const { service } = Astro.props;
 const related = services.filter(s => s.slug !== service.slug && (s.group === service.group || service.group === 'hospitality' && ['chauffeur-services', 'bouncer-event-security', 'corporate-personal-drivers'].includes(s.slug))).slice(0, 3);
@@ -17,6 +18,7 @@ const isSecurity = service.group === 'security';
 const overviewTitle = isSecurity ? ['The right conversation.', 'A clear service scope.'] : service.group === 'hospitality' ? ['A welcome worth planning.', 'The right personnel.'] : ['Your plans. Your schedule.', 'The right personnel.'];
 const usesTitle = { monthly: 'A part of your routine.', hourly: 'A few hours. Many possibilities.', valet: 'Every arrival sets the tone.', outstation: 'A journey planned around you.' }[service.theme] ?? 'Professional support for your plans.';
 const briefTitle = service.theme === 'outstation' ? 'Let’s plan the complete itinerary.' : isSecurity ? 'Start with a clear brief.' : service.theme === 'hourly' ? 'Make the most of your time.' : 'A few details make all the difference.';
+const gallery = fieldGallery[service.slug];
 const enquiry = `Hello JSS Elite Group India, I would like to enquire about ${service.title}.`;
 ---
 <Layout title={`${service.title} in Delhi NCR`} description={`${service.intro} Contact JSS Elite Group India on 9711161009 to discuss availability, scope and service arrangements.`} service={service.title}>
@@ -65,6 +67,13 @@ const enquiry = `Hello JSS Elite Group India, I would like to enquire about ${se
       <Photo name="hero" alt="Chauffeur holding a car door open at a hotel entrance" sizes="100vw" />
       <div class="wrap" data-reveal><span class="eyebrow light">Hospitality is in the details</span><h2 class="title-lg light-heading">A professional first impression. <em>Before they reach the door.</em></h2><a href="#enquire" class="btn">Plan your valet staffing <Icon name="arrow" size={18} class="icon-end" /></a></div>
     </section>
+  )}
+
+  {gallery && (
+    <section class="section"><div class="wrap">
+      <div class="section-head center" data-reveal><span class="eyebrow">From the field</span><h2 class="title-lg">Our team, <em>at work.</em></h2></div>
+      <div class="field-gallery" style={`--shot-ratio:${gallery.ratio}`}>{gallery.shots.map((shot, i) => <figure data-reveal style={`--delay:${i * 90}ms`}><Photo name={shot.name} alt={shot.alt} position={shot.position} sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 31vw" /></figure>)}</div>
+    </div></section>
   )}
 
   <section class="section on-sand"><div class="wrap brief-grid">

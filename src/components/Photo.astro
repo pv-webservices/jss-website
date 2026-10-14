@@ -1,7 +1,9 @@
 ---
-// Serves an AI-generated asset when it has been generated (see scripts/generate-images.mjs),
-// otherwise the curated stock fallback. Pages never reference a missing file.
+// Serves a real company photograph when one exists (see scripts/prepare-field-photos.mjs), then an
+// AI-generated asset (scripts/generate-images.mjs), otherwise the curated stock fallback.
+// Pages never reference a missing file.
 import generated from '../data/generated-images.json';
+import field from '../data/field-photos.json';
 
 interface GeneratedImage { src: string; widths: number[]; width: number; height: number; }
 interface Props { name: string; alt: string; class?: string; hero?: boolean; position?: string; sizes?: string; }
@@ -10,7 +12,7 @@ const STOCK_FALLBACK: Record<string, string> = { team: 'about', portrait: 'chauf
 const STOCK_WIDTHS = [480, 960, 1600];
 
 const { name, alt, class: className = '', hero = false, position, sizes = '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 40vw' } = Astro.props;
-const gen = (generated as Record<string, GeneratedImage>)[name];
+const gen = (field as Record<string, GeneratedImage>)[name] ?? (generated as Record<string, GeneratedImage>)[name];
 const stock = STOCK_FALLBACK[name] ?? name;
 const base = gen ? `/images/${gen.src}` : `/images/${stock}`;
 const widths = gen ? gen.widths : STOCK_WIDTHS;
